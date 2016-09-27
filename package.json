@@ -8,6 +8,7 @@
     "start": "ng build && node .",
     "build": "ng build",
     "postinstall": "cd src && typings install",
+    "typings": "cd src && typings install",
     "watch": "ng serve",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
