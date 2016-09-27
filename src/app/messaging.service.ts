@@ -1,9 +1,8 @@
-import { Injectable, EventEmitter } from '@angular/core';
-import { Http } from '@angular/http';
-import { Client, Channel } from 'twilio-ip-messaging';
-import { AccessManager } from 'twilio-common';
-
 // TEMPORARY HACKS
+// The TypeScript Definitions for 'twilio-ip-messaging' and
+// 'twilio-common' are currently in development.
+// They are currently not exposing the global interface and
+// this makes sure to polyfill this.
 interface ITwilio {
   AccessManager(token: string): void;
   IPMessaging: {
@@ -11,13 +10,18 @@ interface ITwilio {
   }
 }
 declare const Twilio: ITwilio;
-//
+// END OF TEMPORARY HACKS
+
+import { Injectable, EventEmitter } from '@angular/core';
+import { Http } from '@angular/http';
+import { Client, Channel } from 'twilio-ip-messaging';
+import { AccessManager } from 'twilio-common';
 
 import 'rxjs/add/operator/toPromise';
 
 import { environment } from '../environments/environment';
 
-const CHANNEL_NAME = 'test-foo';
+const CHANNEL_NAME = 'general';
 
 export interface StatsDictionary {
   [emoji: string]: number;
