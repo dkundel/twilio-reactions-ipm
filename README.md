@@ -4,9 +4,9 @@ This project was generated with [angular-cli](https://github.com/angular/angular
 
 # Setup project
 
-## 1. [Register for free at Twilio](https://www.twilio.com/try-twilio)
+### 1. [Register for free at Twilio](https://www.twilio.com/try-twilio)
 
-## 2. Get the Twilio configuration values:
+### 2. Get the Twilio configuration values:
 
 | Config Value  | Description |
 | :-------------  |:------------- |
@@ -15,17 +15,17 @@ Account SID | Your primary Twilio account identifier - find this [in the console
 API Key | Used to authenticate - [generate one here](https://www.twilio.com/console/ip-messaging/dev-tools/api-keys).
 API Secret | Used to authenticate - [just like the above, you'll get one here](https://www.twilio.com/console/ip-messaging/dev-tools/api-keys).
 
-## 3. Copy `.env.example` and fill in configuration values in `.env`
+### 3. Copy `.env.example` and fill in configuration values in `.env`
 ```bash
 cp .env.example .env
 ```
 
-## 4. Install Node dependencies
+### 4. Install Node dependencies
 ```bash
 npm install
 ```
 
-## 5. Build source and start server
+### 5. Build source and start server
 Either run
 ```bash
 npm start
@@ -37,7 +37,15 @@ npm run build
 node .
 ```
 
-## 6. Navigate to `https://localhost:3000`
+### 6. Navigate to `https://localhost:3000`
+
+### 7. Do modifications as you like.
+
+You can modify the title and emojis available in the `src/environments/environment.ts` file.
+
+[Or how about writing a bot?](https://www.twilio.com/blog/2016/08/writing-a-bot-for-ip-messaging-in-node-js.html)
+
+### We can’t wait to see what you build.
 
 ---
 
