@@ -1,9 +1,53 @@
-# TwilioReactionsIpm
+# Twilio IP Messaging Demo with Angular 2
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.15.
 
+# Setup project
+
+## 1. [Register for free at Twilio](https://www.twilio.com/try-twilio)
+
+## 2. Get the Twilio configuration values:
+
+| Config Value  | Description |
+| :-------------  |:------------- |
+Service Instance SID | Like a database for your IP Messaging data - [generate one in the console here](https://www.twilio.com/console/ip-messaging/services)
+Account SID | Your primary Twilio account identifier - find this [in the console here](https://www.twilio.com/console/ip-messaging/getting-started).
+API Key | Used to authenticate - [generate one here](https://www.twilio.com/console/ip-messaging/dev-tools/api-keys).
+API Secret | Used to authenticate - [just like the above, you'll get one here](https://www.twilio.com/console/ip-messaging/dev-tools/api-keys).
+
+## 3. Copy `.env.example` and fill in configuration values in `.env`
+```bash
+cp .env.example .env
+```
+
+## 4. Install Node dependencies
+```bash
+npm install
+```
+
+## 5. Build source and start server
+Either run
+```bash
+npm start
+```
+
+Or run:
+```bash
+npm run build
+node .
+```
+
+## 6. Navigate to `https://localhost:3000`
+
+---
+
+# Angular-CLI related
+
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+**IMPORTANT**:
+This will only serve the UI. The IP Messaging will require an endpoint at `/token` which won't be given this way and will crash the application.
 
 ## Code scaffolding
 
