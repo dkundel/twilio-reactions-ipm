@@ -1,3 +1,15 @@
-<p>
-  dashboard works!
-</p>
+<div id="dashboardContent">
+  <div id="flyingCanvas">
+    <app-emoji class="moving" *ngFor="let emoji of emojis" [shortname]="emoji.value" [style.top]="emoji.position"></app-emoji>
+  </div>
+  <div id="statsArea">
+    <div class="emoji-stats" *ngFor="let e of availableEmojis">
+      <div class="emoji-stats--image">
+        <app-emoji [shortname]="e" (click)="add(e)"></app-emoji>
+      </div>
+      <div class="emoji-stats--value">
+        {{stats[e]}}
+      </div>
+    </div>
+  </div>
+</div>

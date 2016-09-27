@@ -1,1 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,700|Oswald:300,400';
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #0D122B;
+  color: #FFF;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
+  border-top: 10px solid #F22F46;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+h1 small {
+  text-transform: none;
+  font-size: 65%;
+  margin-left: 10px;
+}
+
+app-root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+app-mobile, app-dashboard {
+  flex: 1;
+}
+
+header {
+  padding: 10px 20px;
+}
+
+footer {
+  text-align: center;
+  background: #fff;
+  color: #0D122B;
+  padding: 20px;
+}
+
+img.emojione {
+  height: 100%;
+}

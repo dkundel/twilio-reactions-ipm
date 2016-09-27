@@ -1,3 +1,5 @@
-<p>
-  mobile works!
-</p>
+<div id="mobileContainer">
+  <div class="button-field" *ngFor="let emoji of availableEmojis">
+    <app-emoji [shortname]="emoji" (click)="send(emoji)"></app-emoji>
+  </div>
+</div>

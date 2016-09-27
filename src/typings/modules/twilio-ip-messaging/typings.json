@@ -1,0 +1,21 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/dkundel/typed-twilio-ipm/master/typings.json",
+    "raw": "github:dkundel/typed-twilio-ipm",
+    "main": "index.d.ts",
+    "version": "",
+    "dependencies": {
+      "twilio-common": {
+        "src": "https://raw.githubusercontent.com/dkundel/typed-twilio-common/master/typings.json",
+        "raw": "github:dkundel/typed-twilio-common",
+        "main": "index.d.ts",
+        "version": "0.1.5",
+        "name": "twilio-common",
+        "type": "typings"
+      }
+    },
+    "name": "twilio-ip-messaging",
+    "type": "typings"
+  }
+}

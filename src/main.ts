@@ -9,4 +9,7 @@ if (environment.production) {
   enableProdMode();
 }
 
+declare const emojione;
+// emojione.imagePathSVGSprites = '//cdn.jsdelivr.net/emojione/assets/sprites/emojione.sprites.svg'
+
 platformBrowserDynamic().bootstrapModule(AppModule);

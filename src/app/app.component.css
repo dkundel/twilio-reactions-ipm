@@ -1,0 +1,9 @@
+#repoLink {
+  line-height: 2em;
+  vertical-align: top;
+}
+
+#repoLink img {
+  width: 2em;
+  margin-right: 5px;
+}

@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "twilio-common": "github:dkundel/typed-twilio-common",
+    "twilio-ip-messaging": "github:dkundel/typed-twilio-ipm"
+  },
+  "globalDependencies": {}
+}

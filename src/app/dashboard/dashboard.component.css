@@ -1,0 +1,51 @@
+#dashboardContent {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#flyingCanvas {
+  flex: 1;
+  position: relative;
+}
+
+app-emoji.moving {
+  position: absolute;
+  right: 120%;
+  animation-name: flyleft;
+  animation-duration: 8s;
+}
+
+#statsArea {
+  display: flex;
+  justify-content: space-around;
+  padding: 25px;
+}
+
+.emoji-stats--image, .emoji-stats--value {
+  display: inline-block;
+  padding: 10px;
+}
+
+.emoji-stats {
+  font-size: 25px;
+}
+
+.emoji-stats--image {
+  border-right: 2px solid #fff;
+}
+
+.emoji-stats--image .emojione {
+  height: 50px;
+}
+
+@keyframes flyleft {
+  from {
+    right: 0;
+  }
+
+  to {
+    right: 120%;
+  }
+}

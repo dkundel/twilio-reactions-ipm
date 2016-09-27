@@ -7,12 +7,15 @@ import { AppComponent } from './app.component';
 import { routing, appRoutingProviders }  from './app.routing';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MobileComponent } from './mobile/mobile.component';
+import { EmojiComponent } from './emoji/emoji.component';
+import { MessagingService } from './messaging.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    MobileComponent
+    MobileComponent,
+    EmojiComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +24,8 @@ import { MobileComponent } from './mobile/mobile.component';
     routing
   ],
   providers: [
-    appRoutingProviders
+    appRoutingProviders,
+    MessagingService
   ],
   bootstrap: [AppComponent]
 })

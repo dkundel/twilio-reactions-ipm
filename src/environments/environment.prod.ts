@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  title: 'AC Reactions',
+  availableEmojis: [':smile:', ':owl:']
 };

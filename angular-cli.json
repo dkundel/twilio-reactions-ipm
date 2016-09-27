@@ -15,9 +15,14 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
+        "../node_modules/emojione/assets/css/emojione.min.css",
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": [
+        "../node_modules/emojione/lib/js/emojione.min.js",
+        "../node_modules/twilio-common/dist/twilio-common.js",
+        "../node_modules/twilio-ip-messaging/dist/twilio-ip-messaging.js"
+      ],
       "environments": {
         "source": "environments/environment.ts",
         "dev": "environments/environment.ts",
