@@ -2,6 +2,22 @@
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.15.
 
+# Interesting Files
+
+| File | Description |
+| :----: | :------------: |
+[server.js Lines 28-58](lib/server.js#L28-L58) | Exposes `/token` endpoint that generates a token for the client
+[angular-cli.json](angular-cli.json#L23-L24) | Pull in client libraries
+[typings.json](src/typings.json#L3-L4) | Uses the **currently experimental** TypeScript typings for the Twilio JS SDK
+[messaging.service.ts](src/app/messaging.service.ts) | All interaction with the Twilio IP Messaging SDK
+[=> getToken()](src/app/messaging.service.ts#L75) | Retrieves token from `/token` endpoint
+[=> createClient()](src/app/messaging.service.ts#L79-L80) | Initializes client connection using the token
+[=> getOrCreateChannel()](src/app/messaging.service.ts#L86-93) | Tries to get a specific channel or alternatively creates it
+[=> joinChannel()](src/app/messaging.service.ts#L98) | Joins a given channel
+[=> setupListenerChannel()](src/app/messaging.service.ts#L105) | Starts listening on incoming messages for that channel
+[=> getWholeHistoryStats()](src/app/messaging.service.ts#L131) | Gets a paged list of historic messages
+[=> getPagedContent()](src/app/messaging.service.ts#L140-L141) | Checks if another page of messages exists and fetches these
+
 # Setup project
 
 ### 1. [Register for free at Twilio](https://www.twilio.com/try-twilio)
