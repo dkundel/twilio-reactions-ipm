@@ -53,3 +53,7 @@ footer {
 img.emojione {
   height: 100%;
 }
+
+.emoji-stats--image img.emojione {
+  height: 40px;
+}

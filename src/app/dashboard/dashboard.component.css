@@ -15,12 +15,14 @@ app-emoji.moving {
   right: 120%;
   animation-name: flyleft;
   animation-duration: 8s;
+  height: 40px;
 }
 
 #statsArea {
   display: flex;
   justify-content: space-around;
   padding: 25px;
+  flex-wrap: wrap;
 }
 
 .emoji-stats--image, .emoji-stats--value {

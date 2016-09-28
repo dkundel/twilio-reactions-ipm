@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  title: 'Angular Connect Reactions',
+  title: 'Sharks as a Service',
   //availableEmojis: [':smile:', ':owl:', ':slight_smile:',':heart_eyes:',':confused:',':shark:']
   availableEmojis: [':smile_cat:',':vulcan:',':unicorn:',':shark:',':blowfish:',':owl:',':face_palm:',':pancakes:']
 };
