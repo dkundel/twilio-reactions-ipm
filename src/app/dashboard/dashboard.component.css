@@ -32,10 +32,8 @@ app-emoji.moving {
 
 .emoji-stats {
   font-size: 25px;
-}
-
-.emoji-stats--image {
-  border-right: 2px solid #fff;
+  flex: 1;
+  text-align: center;
 }
 
 .emoji-stats--image .emojione {

@@ -14,7 +14,9 @@ declare const Twilio: ITwilio;
 
 import { Injectable, EventEmitter } from '@angular/core';
 import { Http } from '@angular/http';
-import { Client, Channel } from 'twilio-ip-messaging';
+import { Observable } from 'rxjs/Observable';
+import { Subscriber } from 'rxjs/Subscriber';
+import { Client, Channel, Message, Paginator } from 'twilio-ip-messaging';
 import { AccessManager } from 'twilio-common';
 
 import 'rxjs/add/operator/toPromise';
@@ -31,14 +33,15 @@ export interface StatsDictionary {
 export class MessagingService extends EventEmitter<string> {
   private client: Client;
   private channel: Channel;
+  private stats: StatsDictionary;
+  private channelSetupEmitter: EventEmitter<Channel> = new EventEmitter();
 
   constructor(private http: Http) {
     super();
   }
 
-  public init(): void {
-    console.log('Helloooo');
-    this.getToken()
+  public init(): Promise<Channel> {
+    return this.getToken()
       .then(token => this.createClient(token))
       .then(client => this.getOrCreateChannel(client))
       .then(ch => this.joinChannel(ch))
@@ -48,19 +51,23 @@ export class MessagingService extends EventEmitter<string> {
       });
   }
 
+  public getChannelEmitter() {
+    return this.channelSetupEmitter;
+  }
+
   public sendMessage(message: string) {
     if (environment.availableEmojis.indexOf(message) !== -1 && this.channel) {
       this.channel.sendMessage(message);
     }
   }
 
-  public getStats(): Promise<StatsDictionary> {
-    return new Promise<StatsDictionary>((resolve, reject) => {
-      let stats = {};
-      environment.availableEmojis.forEach(e => {
-        stats[e] = 0;
-      });
-      resolve(stats);
+  public getStats(): Observable<StatsDictionary> {
+    if (!this.channel) {
+      return null;
+    }
+
+    return new Observable(subscriber => {
+      this.getWholeHistoryStats(this.channel, subscriber);
     });
   }
 
@@ -98,6 +105,51 @@ export class MessagingService extends EventEmitter<string> {
     channel.on('messageAdded', message => {
       if (environment.availableEmojis.indexOf(message.body) !== -1) {
         this.emit(message.body);
+      }
+    });
+
+    this.channelSetupEmitter.emit(channel);
+
+    return channel;
+  }
+
+  private getWholeHistoryStats(channel: Channel, subscriber: Subscriber<StatsDictionary>): Promise<StatsDictionary> {
+    return new Promise((resolve, reject) => {
+      this.stats = {};
+      let promiseLoop = (page) => {
+        return this.getPagedContent(page, subscriber).then(p => {
+          if (p) {
+            return promiseLoop(p);
+          } else {
+            subscriber.next(this.stats);
+            subscriber.complete();
+            resolve(this.stats);
+          }
+        })
+      }
+
+      channel.getMessagesPaged(200).then(page => {
+        promiseLoop(page);
+      });
+    });
+  }
+
+  private getPagedContent(page: Paginator<Message>, subscriber: Subscriber<StatsDictionary>) {
+    this.extractStats(page.items);
+    subscriber.next(this.stats);
+    if (page.hasPrevPage) {
+      return page.prevPage();
+    } else {
+      return Promise.resolve(null);
+    }
+  }
+
+  private extractStats(messages: Message[]): void {
+    messages.forEach(msg => {
+      if (this.stats[msg.body]) {
+        this.stats[msg.body]++;
+      } else {
+        this.stats[msg.body] = 1;
       }
     });
   }

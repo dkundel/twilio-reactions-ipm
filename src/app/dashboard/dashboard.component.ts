@@ -23,8 +23,10 @@ export class DashboardComponent implements OnInit {
   constructor(private messagingService: MessagingService) { }
 
   ngOnInit() {
-    this.messagingService.getStats().then(stats => {
-      this.stats = stats;
+    this.messagingService.getChannelEmitter().subscribe(ch => {
+      this.messagingService.getStats().subscribe(stats => {
+        this.stats = stats;
+      });
     });
 
     this.messagingService.subscribe(msg => {
